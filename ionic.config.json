@@ -1,0 +1,7 @@
+{
+  "name": "angry-edisan",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

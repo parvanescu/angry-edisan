@@ -1,0 +1,6 @@
+{
+	"appId": "angry.edisan",
+	"appName": "angry-edisan",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
