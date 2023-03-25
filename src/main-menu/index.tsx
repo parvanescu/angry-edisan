@@ -1,6 +1,7 @@
 import { IonContent, IonPage } from "@ionic/react"
 import React from "react"
 import styled from "styled-components"
+import OjisanPresenter from "./components/OjisanPresenter"
 
 const MainMenuContainer = styled(IonContent)`
     --offset-bottom: -3rem!important;
@@ -11,7 +12,7 @@ const MainMenuContainer = styled(IonContent)`
 const MainMenu :React.FC = () => {
 
     return <MainMenuContainer>
-        main menu
+        <OjisanPresenter/>
     </MainMenuContainer>
 }
 
