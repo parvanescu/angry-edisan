@@ -33,7 +33,7 @@ const MainMenu :React.FC = () => {
         <GameSettings/>
         <MainMenuButtonsContainer>
             <div style={{display: "flex", flexDirection: "column"}}>
-                <MainMenuButtons button>
+                <MainMenuButtons button href="/game-table">
                     Play
                 </MainMenuButtons>
                 <MainMenuButtons button href="/options">

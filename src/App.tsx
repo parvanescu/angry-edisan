@@ -25,6 +25,7 @@ import './theme/variables.css';
 import MainMenu from './main-menu';
 import AppContainer from './common/AppContainer';
 import Options from './options';
+import GameTable from './gametable';
 
 setupIonicReact();
 
@@ -42,6 +43,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/options" exact={true}>
               <Options/>
+            </Route>
+            <Route path="/game-table" exact={true}>
+              <GameTable/>
             </Route>
           </IonRouterOutlet>
           </AppContainer>
