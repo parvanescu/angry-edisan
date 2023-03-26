@@ -9,6 +9,7 @@ const GameSettingsContainer = styled(IonCard)`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-shadow: none;
 `
 
 const GameSettings: React.FC = () => {
@@ -18,7 +19,7 @@ const GameSettings: React.FC = () => {
             <IonRow>
                 <TableSize/>
             </IonRow>
-            <IonRow>
+            <IonRow style={{display:"flex", justifyContent: "center"}}>
                 <CharacterSelection/>
             </IonRow>
         </IonGrid>
