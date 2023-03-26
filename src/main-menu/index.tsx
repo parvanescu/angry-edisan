@@ -1,4 +1,4 @@
-import { IonContent, IonPage } from "@ionic/react"
+import { IonCard, IonContent, IonPage } from "@ionic/react"
 import React from "react"
 import styled from "styled-components"
 import GameSettings from "./components/GameSettings"
@@ -10,11 +10,37 @@ const MainMenuContainer = styled(IonContent)`
     --background: url(/assets/photo/menu.jpg) no-repeat center center fixed;
 `
 
+const MainMenuButtonsContainer = styled(IonCard)`
+    --background: transparent;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+`
+const MainMenuButtons = styled(IonCard)`
+    --background: url(/assets/photo/wooden-background.jpg) no-repeat center center fixed;
+    width: 6rem;
+    text-align: center;
+    color: white;
+    padding: 5px;
+    font-size: 1rem;
+`
+
 const MainMenu :React.FC = () => {
 
     return <MainMenuContainer>
         <OjisanPresenter/>
         <GameSettings/>
+        <MainMenuButtonsContainer>
+            <div style={{display: "flex", flexDirection: "column"}}>
+                <MainMenuButtons button>
+                    Play
+                </MainMenuButtons>
+                <MainMenuButtons button>
+                    Options
+                </MainMenuButtons>
+            </div>
+        </MainMenuButtonsContainer>
     </MainMenuContainer>
 }
 
