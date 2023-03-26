@@ -24,6 +24,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import MainMenu from './main-menu';
 import AppContainer from './common/AppContainer';
+import Options from './options';
 
 setupIonicReact();
 
@@ -38,6 +39,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/main-menu-ojisan" exact={true}>
               <MainMenu/>
+            </Route>
+            <Route path="/options" exact={true}>
+              <Options/>
             </Route>
           </IonRouterOutlet>
           </AppContainer>

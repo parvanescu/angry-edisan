@@ -36,7 +36,7 @@ const MainMenu :React.FC = () => {
                 <MainMenuButtons button>
                     Play
                 </MainMenuButtons>
-                <MainMenuButtons button>
+                <MainMenuButtons button href="/options">
                     Options
                 </MainMenuButtons>
             </div>
