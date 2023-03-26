@@ -1,6 +1,7 @@
 import { IonContent, IonPage } from "@ionic/react"
 import React from "react"
 import styled from "styled-components"
+import GameSettings from "./components/GameSettings"
 import OjisanPresenter from "./components/OjisanPresenter"
 
 const MainMenuContainer = styled(IonContent)`
@@ -13,6 +14,7 @@ const MainMenu :React.FC = () => {
 
     return <MainMenuContainer>
         <OjisanPresenter/>
+        <GameSettings/>
     </MainMenuContainer>
 }
 
