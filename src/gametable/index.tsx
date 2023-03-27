@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { IonCard, IonContent } from "@ionic/react";
 import styled from "styled-components";
+import gameSettingsState from "../common/state";
+import {useRecoilValue} from "recoil";
 
 const GameTableContainer = styled(IonContent)`
     --offset-bottom: -3rem!important;
@@ -21,9 +23,12 @@ const messagesList = ["Dai CAINE!!!", "Nu te tine sa mai dai odata", "Esti pizda
 
 const GameTable: React.FC = () => {
     const [headerMessage, setHeaderMessage] = useState(Math.floor(Math.random() * 4))
+    const gameSettings = useRecoilValue(gameSettingsState)
 
     return  <GameTableContainer>
         <GameTableHeader>{messagesList[headerMessage]}</GameTableHeader>
+        TableSize: {gameSettings.tableSize}
+        MultipleFaces: {gameSettings.multipleFaces? "true":"false"}
     </GameTableContainer>
 }
 

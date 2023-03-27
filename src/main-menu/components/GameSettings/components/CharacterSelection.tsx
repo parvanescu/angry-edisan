@@ -1,6 +1,8 @@
 import { IonCard, IonCol, IonGrid, IonImg, IonRow } from "@ionic/react";
 import React, { useState } from "react";
 import styled from "styled-components";
+import gameSettingsState from "../../../../common/state";
+import {useRecoilState} from 'recoil';
 
 const CharacterSelectionContainer = styled(IonCard)`
     border: 3px solid black;
@@ -23,18 +25,25 @@ const CharacterImg = styled(IonImg)`
 `
 
 const CharacterSelection:React.FC = () => {
-    const [selectedCharacter, setSelectedCharacter] = useState(0)
+    const [gameSettings, setGameSettings] = useRecoilState(gameSettingsState);
+    const [selectedCharacter, setSelectedCharacter] = useState(gameSettings.multipleFaces == false ? 0 : 1)
+
+    const handleCharacterChange = (index: number) => {
+        const newGameSettings = {...gameSettings, multipleFaces: index == 1};
+        setGameSettings(newGameSettings)
+        setSelectedCharacter(index)
+    }
 
     return <CharacterSelectionContainer>
         <IonGrid style={{padding: "0"}}>
             <IonRow>
                 <IonCol style={{borderRight: "1.5px solid black", padding: "0"}}>
-                    <CharacterCard selected={selectedCharacter == 0} button onClick={()=>{setSelectedCharacter(0)}}>
+                    <CharacterCard selected={selectedCharacter == 0} button onClick={()=>{handleCharacterChange(0)}}>
                         <CharacterImg src={"/assets/photo/one_character.png"}/>
                     </CharacterCard>
                 </IonCol>
                 <IonCol style={{borderLeft: "1.5px solid black", padding: "0"}}>
-                    <CharacterCard selected={selectedCharacter == 1}  button onClick={()=>{setSelectedCharacter(1)}}>
+                    <CharacterCard selected={selectedCharacter == 1}  button onClick={()=>{handleCharacterChange(1)}}>
                         <CharacterImg src={"/assets/photo/multiple_characters.png"}/>
                     </CharacterCard>
                 </IonCol>

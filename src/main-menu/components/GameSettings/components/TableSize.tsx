@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IonCard, IonCol, IonGrid, IonRow } from "@ionic/react";
 import styled from "styled-components";
+import {useRecoilState} from "recoil";
+import gameSettingsState from "../../../../common/state";
 
 const TableSizeContainer = styled(IonCard)`
     --background: #292929;
@@ -26,8 +28,15 @@ const SizeCard = styled(IonCard)`
 `
 
 const TableSize:React.FC = () => {
-    const [selectedSize,setSelectedSize] = useState(0)
+    const [gameSettings, setGameSettings] = useRecoilState(gameSettingsState);
     const sizes = [9,16,25,36]
+    const [selectedSize,setSelectedSize] = useState(sizes.findIndex((value) => value == gameSettings.tableSize));
+    
+    const handleSizeChange = (index:number) => {
+        const newGameSettings = {...gameSettings, tableSize: sizes[index]}
+        setGameSettings(newGameSettings)
+        setSelectedSize(index)
+    }
 
     return <TableSizeContainer>
         <SizeGrid>
@@ -37,7 +46,7 @@ const TableSize:React.FC = () => {
                 </IonCol>
                 {sizes.map((size,index) =>
                      <IonCol size="2" style={{padding: "2px 0"}}>
-                        <SizeCard selected={selectedSize == index} button onClick={()=>{setSelectedSize(index)}}>
+                        <SizeCard selected={selectedSize == index} button onClick={()=>{handleSizeChange(index)}}>
                             <div style={{margin:"5px", color: "#040113"}}>{size}</div>
                         </SizeCard>
                     </IonCol>
