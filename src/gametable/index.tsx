@@ -5,6 +5,7 @@ import States from "../common/state";
 import {useRecoilValue} from "recoil";
 import InitialTable from "./components/InitialTable";
 import Table from "./components/Table";
+import GameOverPanel from "./components/GameOverPanel";
 
 const GameTableContainer = styled(IonContent)`
     --offset-bottom: -3rem!important;
@@ -30,14 +31,15 @@ const GameTable: React.FC = () => {
     const gameState = useRecoilValue(States.gameState)
 
     useEffect(()=>{
-        if(gameState.badWasClicked === true) setGameOver(true)
+        if(gameState.imageIndex) setGameOver(true)
     }, [gameState])
 
     return  <GameTableContainer>
+        {gameOver && <GameOverPanel imageIndex={gameState.imageIndex}/>}
         <GameTableHeader>{messagesList[headerMessage]}</GameTableHeader>
         <InitialTable/>
         <Table/>
-        {gameOver && <div>AI PIERDUT</div> }
+        
     </GameTableContainer>
 }
 

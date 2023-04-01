@@ -28,11 +28,11 @@ const gameSettingsState = atom({
 })
 
 interface GameStateProps{
-  badWasClicked: boolean
+  imageIndex: number | undefined
 }
 
 const defaultGameState: GameStateProps = {
-  badWasClicked: false
+  imageIndex: undefined
 }
 
 const gameState = atom({

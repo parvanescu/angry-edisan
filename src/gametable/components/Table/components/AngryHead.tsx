@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import States from "../../../../common/state";
-import numberToImageMap from "../../../../common/numberToImageMap"
+import {numberToImageMap} from "../../../../common/numberToImageMap"
 
 const AngryHeadCard = styled(IonCard)`
     --background: transparent;
@@ -22,7 +22,7 @@ interface AngryHeadProps{
 
 const AngryHead: React.FC<AngryHeadProps> = ({imageIndex, isBad}) => {
     const [isClicked,setIsClicked] = useState(false)
-    const [{badWasClicked}, setBadWasClicked] = useRecoilState(States.gameState);
+    const [gameState, setBadWasClicked] = useRecoilState(States.gameState);
 
     return  <CreateAnimation
         duration={1000}
@@ -35,7 +35,7 @@ const AngryHead: React.FC<AngryHeadProps> = ({imageIndex, isBad}) => {
         >
             <AngryHeadCard button onClick={()=>{
                 setIsClicked(true)
-                if(isBad) setBadWasClicked({badWasClicked: true})
+                if(isBad) setBadWasClicked({imageIndex})
             }}>
                 <AngryHeadsImg src={numberToImageMap.get(imageIndex)}></AngryHeadsImg>
             </AngryHeadCard>
