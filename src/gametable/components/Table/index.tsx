@@ -10,7 +10,6 @@ import AngryHead from "./components/AngryHead";
 const PresenterContainer = styled(IonCard)`
     --background: rgba(244,235,217,255);
     border: 3px solid black;
-    position: absolute;
     width: 95%;
     height: 70%;
 `
@@ -19,7 +18,6 @@ const Table : React.FC = () => {
     const {tableSize, multipleFaces} = useRecoilValue(States.gameSettingsState)
     const maxSize = Math.sqrt(tableSize)
     const tableMatrix = getRandomMatrix(maxSize, maxSize, multipleFaces)
-    console.log(tableMatrix)
 
     return <PresenterContainer>
         <IonGrid>

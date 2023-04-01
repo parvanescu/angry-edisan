@@ -25,17 +25,19 @@ const messagesList = ["Dai CAINE!!!", "Nu te tine sa mai dai odata", "Esti pizda
 
 const GameTable: React.FC = () => {
     const [headerMessage, setHeaderMessage] = useState(Math.floor(Math.random() * 4))
+    const [gameOver, setGameOver] = useState(false)
     const gameSettings = useRecoilValue(States.gameSettingsState)
     const gameState = useRecoilValue(States.gameState)
 
     useEffect(()=>{
-        if(gameState.badWasClicked === true) alert("AI GRESIT")
+        if(gameState.badWasClicked === true) setGameOver(true)
     }, [gameState])
 
     return  <GameTableContainer>
         <GameTableHeader>{messagesList[headerMessage]}</GameTableHeader>
         <InitialTable/>
         <Table/>
+        {gameOver && <div>AI PIERDUT</div>}
     </GameTableContainer>
 }
 
