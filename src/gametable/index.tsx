@@ -37,7 +37,7 @@ const GameTable: React.FC = () => {
         <GameTableHeader>{messagesList[headerMessage]}</GameTableHeader>
         <InitialTable/>
         <Table/>
-        {gameOver && <div>AI PIERDUT</div>}
+        {gameOver && <div>AI PIERDUT</div> }
     </GameTableContainer>
 }
 
