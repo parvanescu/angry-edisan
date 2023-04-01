@@ -1,0 +1,20 @@
+const numberToImageMap = new Map();
+numberToImageMap.set(0,"/assets/photo/birsan.png")
+numberToImageMap.set(1,"/assets/photo/birsan.png")
+numberToImageMap.set(2,"/assets/photo/birsan.png")
+numberToImageMap.set(3,"/assets/photo/birsan.png")
+numberToImageMap.set(4,"/assets/photo/birsan.png")
+numberToImageMap.set(5,"/assets/photo/birsan.png")
+numberToImageMap.set(6,"/assets/photo/birsan.png")
+numberToImageMap.set(7,"/assets/photo/birsan.png")
+numberToImageMap.set(8,"/assets/photo/birsan.png")
+numberToImageMap.set(9,"/assets/photo/birsan.png")
+numberToImageMap.set(10,"/assets/photo/birsan.png")
+numberToImageMap.set(11,"/assets/photo/birsan.png")
+numberToImageMap.set(12,"/assets/photo/birsan.png")
+numberToImageMap.set(13,"/assets/photo/birsan.png")
+numberToImageMap.set(14,"/assets/photo/birsan.png")
+numberToImageMap.set(15,"/assets/photo/birsan.png")
+numberToImageMap.set(16,"/assets/photo/birsan.png")
+
+export default numberToImageMap

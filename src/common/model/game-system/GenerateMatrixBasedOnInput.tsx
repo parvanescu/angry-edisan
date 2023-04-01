@@ -6,11 +6,12 @@ interface HeadMatrixElement{
 }
 // matrice bazata pe tipul de tabela 
 
-export default function getRandomMatrix(rows: number, cols: number): HeadMatrixElement[][] {
+export default function getRandomMatrix(rows: number, cols: number, multipleFaces: boolean): HeadMatrixElement[][] {
 
     const matrix: HeadMatrixElement[][] = [];
 
     let badNum = defineBadChoiceNumber(rows);
+    const randomNumForPanel: number = Math.floor(Math.random() * 16) + 1; 
   
     for (let i = 0; i < rows; i++) {
       matrix[i] = [];
@@ -19,7 +20,7 @@ export default function getRandomMatrix(rows: number, cols: number): HeadMatrixE
     
         matrix[i][j] = 
         {
-            image: randomNum,
+            image: multipleFaces == true ? randomNum: randomNumForPanel,
             isBad: i * rows + j == badNum
         };
         

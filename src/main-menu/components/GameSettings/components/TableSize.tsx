@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { IonCard, IonCol, IonGrid, IonRow } from "@ionic/react";
 import styled from "styled-components";
 import {useRecoilState} from "recoil";
-import gameSettingsState from "../../../../common/state";
+import States from "../../../../common/state";
 
 const TableSizeContainer = styled(IonCard)`
     --background: #292929;
@@ -28,7 +28,7 @@ const SizeCard = styled(IonCard)`
 `
 
 const TableSize:React.FC = () => {
-    const [gameSettings, setGameSettings] = useRecoilState(gameSettingsState);
+    const [gameSettings, setGameSettings] = useRecoilState(States.gameSettingsState);
     const sizes = [9,16,25,36]
     const [selectedSize,setSelectedSize] = useState(sizes.findIndex((value) => value == gameSettings.tableSize));
     

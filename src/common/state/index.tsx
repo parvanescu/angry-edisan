@@ -27,4 +27,17 @@ const gameSettingsState = atom({
     ]
 })
 
-export default gameSettingsState 
+interface GameStateProps{
+  badWasClicked: boolean
+}
+
+const defaultGameState: GameStateProps = {
+  badWasClicked: false
+}
+
+const gameState = atom({
+  key: 'gameState',
+  default: defaultGameState
+})
+
+export default {gameSettingsState, gameState} 

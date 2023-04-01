@@ -1,6 +1,9 @@
 import { CreateAnimation, IonCard, IonImg } from "@ionic/react";
 import React, { useState } from "react";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import States from "../../../../common/state";
+import numberToImageMap from "../../../../common/numberToImageMap"
 
 const AngryHeadCard = styled(IonCard)`
     --background: transparent;
@@ -17,9 +20,9 @@ interface AngryHeadProps{
     isBad: boolean
 }
 
-const AngryHead: React.FC = () => {
+const AngryHead: React.FC<AngryHeadProps> = ({imageIndex, isBad}) => {
     const [isClicked,setIsClicked] = useState(false)
-
+    const [{badWasClicked}, setBadWasClicked] = useRecoilState(States.gameState);
 
     return  <CreateAnimation
         duration={1000}
@@ -30,8 +33,11 @@ const AngryHead: React.FC = () => {
         ]}
         play={isClicked}
         >
-            <AngryHeadCard button onClick={()=>setIsClicked(true)}>
-                <AngryHeadsImg src="/assets/photo/soup.png"></AngryHeadsImg>
+            <AngryHeadCard button onClick={()=>{
+                setIsClicked(true)
+                if(isBad) setBadWasClicked({badWasClicked: true})
+            }}>
+                <AngryHeadsImg src={numberToImageMap.get(imageIndex)}></AngryHeadsImg>
             </AngryHeadCard>
         </CreateAnimation>
 }

@@ -1,7 +1,7 @@
 import { IonCard, IonCol, IonGrid, IonImg, IonRow } from "@ionic/react";
 import React, { useState } from "react";
 import styled from "styled-components";
-import gameSettingsState from "../../../../common/state";
+import States from "../../../../common/state";
 import {useRecoilState} from 'recoil';
 
 const CharacterSelectionContainer = styled(IonCard)`
@@ -25,7 +25,7 @@ const CharacterImg = styled(IonImg)`
 `
 
 const CharacterSelection:React.FC = () => {
-    const [gameSettings, setGameSettings] = useRecoilState(gameSettingsState);
+    const [gameSettings, setGameSettings] = useRecoilState(States.gameSettingsState);
     const [selectedCharacter, setSelectedCharacter] = useState(gameSettings.multipleFaces == false ? 0 : 1)
 
     const handleCharacterChange = (index: number) => {

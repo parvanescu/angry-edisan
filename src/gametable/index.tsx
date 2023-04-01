@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IonCard, IonContent } from "@ionic/react";
 import styled from "styled-components";
-import gameSettingsState from "../common/state";
+import States from "../common/state";
 import {useRecoilValue} from "recoil";
 import InitialTable from "./components/InitialTable";
 import Table from "./components/Table";
@@ -25,7 +25,12 @@ const messagesList = ["Dai CAINE!!!", "Nu te tine sa mai dai odata", "Esti pizda
 
 const GameTable: React.FC = () => {
     const [headerMessage, setHeaderMessage] = useState(Math.floor(Math.random() * 4))
-    const gameSettings = useRecoilValue(gameSettingsState)
+    const gameSettings = useRecoilValue(States.gameSettingsState)
+    const gameState = useRecoilValue(States.gameState)
+
+    useEffect(()=>{
+        if(gameState.badWasClicked === true) alert("AI GRESIT")
+    }, [gameState])
 
     return  <GameTableContainer>
         <GameTableHeader>{messagesList[headerMessage]}</GameTableHeader>
