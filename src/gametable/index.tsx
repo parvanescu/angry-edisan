@@ -4,6 +4,7 @@ import styled from "styled-components";
 import gameSettingsState from "../common/state";
 import {useRecoilValue} from "recoil";
 import InitialTable from "./components/InitialTable";
+import Table from "./components/Table";
 
 const GameTableContainer = styled(IonContent)`
     --offset-bottom: -3rem!important;
@@ -29,6 +30,7 @@ const GameTable: React.FC = () => {
     return  <GameTableContainer>
         <GameTableHeader>{messagesList[headerMessage]}</GameTableHeader>
         <InitialTable/>
+        <Table/>
     </GameTableContainer>
 }
 
