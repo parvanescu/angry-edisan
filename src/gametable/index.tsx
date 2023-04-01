@@ -3,6 +3,7 @@ import { IonCard, IonContent } from "@ionic/react";
 import styled from "styled-components";
 import gameSettingsState from "../common/state";
 import {useRecoilValue} from "recoil";
+import InitialTable from "./components/InitialTable";
 
 const GameTableContainer = styled(IonContent)`
     --offset-bottom: -3rem!important;
@@ -27,8 +28,7 @@ const GameTable: React.FC = () => {
 
     return  <GameTableContainer>
         <GameTableHeader>{messagesList[headerMessage]}</GameTableHeader>
-        TableSize: {gameSettings.tableSize}
-        MultipleFaces: {gameSettings.multipleFaces? "true":"false"}
+        <InitialTable/>
     </GameTableContainer>
 }
 
