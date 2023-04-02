@@ -11,12 +11,12 @@ export default function getRandomMatrix(rows: number, cols: number, multipleFace
     const matrix: HeadMatrixElement[][] = [];
 
     let badNum = defineBadChoiceNumber(rows);
-    const randomNumForPanel: number = Math.floor(Math.random() * 16) + 1; 
+    const randomNumForPanel: number = Math.floor(Math.random() * 14) + 1; 
   
     for (let i = 0; i < rows; i++) {
       matrix[i] = [];
       for (let j = 0; j < cols; j++) {
-        const randomNum: number = Math.floor(Math.random() * 16) + 1;
+        const randomNum: number = Math.floor(Math.random() * 14) + 1;
     
         matrix[i][j] = 
         {
