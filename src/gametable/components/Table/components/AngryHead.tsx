@@ -1,6 +1,6 @@
 import { CreateAnimation, IonCard, IonImg } from "@ionic/react";
 import React, { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
 import States from "../../../../common/state";
 import {numberToImageMap} from "../../../../common/numberToImageMap"
@@ -10,9 +10,13 @@ const AngryHeadCard = styled(IonCard)`
     margin: 0;
 `
 
+interface AngryHeadsImgProps{
+    dynamicHeight: number
+}
+
 //TODO: change height depending on the size
-const AngryHeadsImg = styled(IonImg)`
-    height: 15vh;
+const AngryHeadsImg = styled(IonImg)<AngryHeadsImgProps>`
+    height: ${(props:AngryHeadsImgProps) => props.dynamicHeight}vh;
 `
 
 interface AngryHeadProps{
@@ -23,6 +27,15 @@ interface AngryHeadProps{
 const AngryHead: React.FC<AngryHeadProps> = ({imageIndex, isBad}) => {
     const [isClicked,setIsClicked] = useState(false)
     const [gameState, setBadWasClicked] = useRecoilState(States.gameState);
+    const gameSettingsState = useRecoilValue(States.gameSettingsState)
+    const tableSize = Math.sqrt(gameSettingsState.tableSize)
+    const heightMap = new Map<number,number>()
+    heightMap.set(9,15)
+    heightMap.set(16,8)
+    heightMap.set(25,5)
+    heightMap.set(36,2)
+
+    const [audio] = useState(new Audio('/assets/sounds/head_sound.mp3'))
 
     return  <CreateAnimation
         duration={1000}
@@ -34,10 +47,17 @@ const AngryHead: React.FC<AngryHeadProps> = ({imageIndex, isBad}) => {
         play={isClicked}
         >
             <AngryHeadCard button onClick={()=>{
+                audio.load()
+                audio.volume = 100;
+                audio.play()
                 setIsClicked(true)
                 if(isBad) setBadWasClicked({imageIndex})
-            }}>
-                <AngryHeadsImg src={numberToImageMap.get(imageIndex)}></AngryHeadsImg>
+            }}
+            >
+                <AngryHeadsImg 
+                    src={"/assets/photo/small/masashi_small.png"}
+                    dynamicHeight={heightMap.get(tableSize) || 15}
+                />
             </AngryHeadCard>
         </CreateAnimation>
 }
