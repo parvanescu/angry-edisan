@@ -37,10 +37,10 @@ interface GameOverPanelProps{
 }
 
 const GameOverPanel: React.FC<GameOverPanelProps> = ({imageIndex}) => {
-    console.log(imageIndex)
+    const image = numberToLosingImageMap.get(imageIndex)
 
     return <GameOverPanelCard>
-        <IonImg src={numberToLosingImageMap.get(imageIndex)} style={{width: "90vw", height: "60vh"}}></IonImg>
+        <IonImg src={image} style={{width: "90vw", height: "60vh"}}></IonImg>
         <GameOverOptionsContainer>
             <PlayAgainButton button href="/main-menu-ojisan">
                 Main menu
