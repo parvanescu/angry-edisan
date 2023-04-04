@@ -8,6 +8,7 @@ import {numberToImageMap} from "../../../../common/numberToImageMap"
 const AngryHeadCard = styled(IonCard)`
     --background: transparent;
     margin: 0;
+    box-shadow: none;
 `
 
 interface AngryHeadsImgProps{
@@ -27,13 +28,12 @@ interface AngryHeadProps{
 const AngryHead: React.FC<AngryHeadProps> = ({imageIndex, isBad}) => {
     const [isClicked,setIsClicked] = useState(false)
     const [gameState, setBadWasClicked] = useRecoilState(States.gameState);
-    const gameSettingsState = useRecoilValue(States.gameSettingsState)
-    const tableSize = Math.sqrt(gameSettingsState.tableSize)
+    const {tableSize} = useRecoilValue(States.gameSettingsState)
     const heightMap = new Map<number,number>()
     heightMap.set(9,15)
-    heightMap.set(16,9)
-    heightMap.set(25,6)
-    heightMap.set(36,4)
+    heightMap.set(16,11.5)
+    heightMap.set(25,8.5)
+    heightMap.set(36,7)
 
     const [audio] = useState(new Audio('/assets/sounds/head_sound.mp3'))
 
