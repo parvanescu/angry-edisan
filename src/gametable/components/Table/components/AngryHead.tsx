@@ -31,9 +31,9 @@ const AngryHead: React.FC<AngryHeadProps> = ({imageIndex, isBad}) => {
     const tableSize = Math.sqrt(gameSettingsState.tableSize)
     const heightMap = new Map<number,number>()
     heightMap.set(9,15)
-    heightMap.set(16,8)
-    heightMap.set(25,5)
-    heightMap.set(36,2)
+    heightMap.set(16,9)
+    heightMap.set(25,6)
+    heightMap.set(36,4)
 
     const [audio] = useState(new Audio('/assets/sounds/head_sound.mp3'))
 
@@ -48,14 +48,13 @@ const AngryHead: React.FC<AngryHeadProps> = ({imageIndex, isBad}) => {
         >
             <AngryHeadCard button onClick={()=>{
                 audio.load()
-                audio.volume = 100;
                 audio.play()
                 setIsClicked(true)
                 if(isBad) setBadWasClicked({imageIndex})
             }}
             >
                 <AngryHeadsImg 
-                    src={"/assets/photo/small/masashi_small.png"}
+                    src={numberToImageMap.get(imageIndex)}
                     dynamicHeight={heightMap.get(tableSize) || 15}
                 />
             </AngryHeadCard>
