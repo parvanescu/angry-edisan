@@ -1,7 +1,8 @@
 import { IonButton, IonCard, IonImg } from "@ionic/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { numberToLosingImageMap } from "../../../common/numberToImageMap";
+import { numberToSoundListMap } from "../../../common/numberToSoundListMap";
 
 const GameOverPanelCard = styled(IonCard)`
     --background: rgba(0,0,0,0.8);
@@ -38,6 +39,14 @@ interface GameOverPanelProps{
 
 const GameOverPanel: React.FC<GameOverPanelProps> = ({imageIndex}) => {
     const image = numberToLosingImageMap.get(imageIndex)
+    const audioNr = Math.floor(Math.random() * 2);
+    const [audio] = useState(new Audio(numberToSoundListMap.get(imageIndex)[audioNr]))
+
+
+    useEffect(()=>{
+        audio.load()
+        audio.play()
+    }, [])
 
     return <GameOverPanelCard>
         <IonImg src={image} style={{width: "90vw", height: "60vh"}}></IonImg>

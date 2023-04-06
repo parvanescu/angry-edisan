@@ -1,8 +1,9 @@
 import { IonCard, IonContent, IonPage } from "@ionic/react"
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import GameSettings from "./components/GameSettings"
 import OjisanPresenter from "./components/OjisanPresenter"
+import { numberToSoundListMap } from "../common/numberToSoundListMap"
 
 const MainMenuContainer = styled(IonContent)`
     --offset-bottom: -3rem!important;
@@ -27,6 +28,11 @@ const MainMenuButtons = styled(IonCard)`
 `
 
 const MainMenu :React.FC = () => {
+    const [soundNr, setSoundNr] = useState(0)
+    const [headSoundNr, setHeadSoundNr] = useState(0)
+
+    //
+    //
 
     return <MainMenuContainer>
         <OjisanPresenter/>
